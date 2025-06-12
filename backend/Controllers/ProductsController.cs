@@ -18,9 +18,18 @@ namespace MyntraCloneBackend.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Product>> Get()
+        public ActionResult<IEnumerable<Product>> Get([FromQuery] int? categoryId, [FromQuery] string search)
         {
-            return _context.Products.ToList();
+            var query = _context.Products.AsQueryable();
+            if (categoryId.HasValue)
+            {
+                query = query.Where(p => p.CategoryId == categoryId.Value);
+            }
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(p => p.Name.Contains(search));
+            }
+            return query.ToList();
         }
 
         [HttpGet("{id}")]

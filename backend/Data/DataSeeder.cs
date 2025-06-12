@@ -7,11 +7,25 @@ namespace MyntraCloneBackend.Data
     {
         public static void Seed(AppDbContext context)
         {
+            if (!context.Categories.Any())
+            {
+                context.Categories.AddRange(
+                    new Category { Name = "Men" },
+                    new Category { Name = "Women" },
+                    new Category { Name = "Kids" }
+                );
+                context.SaveChanges();
+            }
+
             if (!context.Products.Any())
             {
+                var men = context.Categories.First(c => c.Name == "Men");
+                var women = context.Categories.First(c => c.Name == "Women");
+
                 context.Products.AddRange(
-                    new Product { Name = "T-Shirt", Description = "Cotton T-Shirt", Price = 19.99M, ImageUrl = "/images/tshirt.png" },
-                    new Product { Name = "Jeans", Description = "Blue Denim", Price = 49.99M, ImageUrl = "/images/jeans.png" }
+                    new Product { Name = "T-Shirt", Description = "Cotton T-Shirt", Price = 19.99M, ImageUrl = "/images/tshirt.png", CategoryId = men.Id },
+                    new Product { Name = "Jeans", Description = "Blue Denim", Price = 49.99M, ImageUrl = "/images/jeans.png", CategoryId = men.Id },
+                    new Product { Name = "Dress", Description = "Red Dress", Price = 39.99M, ImageUrl = "/images/dress.png", CategoryId = women.Id }
                 );
                 context.SaveChanges();
             }

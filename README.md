@@ -6,7 +6,8 @@ This repository contains a simple demonstration of how a Myntra style applicatio
 
 * Located in the `backend` directory.
 * Uses Entity Framework Core with an SQLite database (`myntra.db`).
-* Exposes product endpoints and a very small in‑memory cart service.
+* Exposes product and category endpoints, plus a simple in‑memory cart service.
+* Orders can be created via `/api/orders` to simulate checkout.
 
 Run the backend with:
 
@@ -18,6 +19,7 @@ dotnet run
 ## Frontend (React)
 
 The frontend lives in the `frontend` folder and is a small Create React App project. It fetches data from the backend and allows adding items to a cart.
+You can filter products by category, search by name and perform a minimal checkout which creates an order.
 
 Install dependencies and start the dev server with:
 
