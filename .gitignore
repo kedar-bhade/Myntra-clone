@@ -1,0 +1,5 @@
+# Ignore build and publish outputs
+backend/bin/
+backend/obj/
+*.db
+node_modules/
