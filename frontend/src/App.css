@@ -29,3 +29,9 @@ header {
   display: flex;
   gap: 1rem;
 }
+
+.auth {
+  margin: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+}

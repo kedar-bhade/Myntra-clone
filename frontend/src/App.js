@@ -8,6 +8,9 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [search, setSearch] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     axios.get('/api/products')
@@ -39,12 +42,40 @@ function App() {
       .catch(err => console.error(err));
   };
 
+  const register = () => {
+    axios.post('/api/auth/register', { username, password })
+      .then(() => alert('Registered'))
+      .catch(() => alert('Error registering'));
+  };
+
+  const login = () => {
+    axios.post('/api/auth/login', { username, password })
+      .then(() => {
+        setUser(username);
+        setUsername('');
+        setPassword('');
+      })
+      .catch(() => alert('Invalid credentials'));
+  };
+
   return (
     <div className="App">
       <header>
         <img src="/logo.png" className="logo" alt="logo" />
         <h1>Myntra Clone</h1>
       </header>
+      <div className="auth">
+        {user ? (
+          <p>Logged in as {user}</p>
+        ) : (
+          <>
+            <input placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
+            <input placeholder="Password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
+            <button onClick={login}>Login</button>
+            <button onClick={register}>Register</button>
+          </>
+        )}
+      </div>
       <div className="filters">
         <select value={selectedCategory} onChange={e => setSelectedCategory(Number(e.target.value))}>
           <option value="">All</option>
