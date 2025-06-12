@@ -1,0 +1,16 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 2rem auto;
+  gap: 0.5rem;
+}
+.auth-form input {
+  padding: 0.5rem;
+}
+.auth-form button {
+  padding: 0.5rem;
+  background: #FF3F6C;
+  border: none;
+  color: white;
+}

@@ -1,6 +1,6 @@
 # Myntra Clone Skeleton
 
-This repository contains a simple demonstration of how a Myntra style application could be structured using a C# backend and a React frontend. It is still far from a production ready clone, but the project can be run locally with common tooling.
+This repository contains a simple demonstration of how a Myntra style application could be structured using a C# backend and a React frontend. It is still far from a production ready clone, but the project can be run locally with common tooling. Basic user registration and login functionality is included.
 
 ## Backend (C# / ASP.NET Core)
 
@@ -8,6 +8,7 @@ This repository contains a simple demonstration of how a Myntra style applicatio
 * Uses Entity Framework Core with an SQLite database (`myntra.db`).
 * Exposes product and category endpoints, plus a simple in‑memory cart service.
 * Orders can be created via `/api/orders` to simulate checkout.
+* Users can register via `/api/auth/register` and log in via `/api/auth/login`.
 
 Run the backend with:
 

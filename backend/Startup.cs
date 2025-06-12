@@ -25,6 +25,7 @@ namespace MyntraCloneBackend
                 options.UseSqlite("Data Source=myntra.db"));
 
             services.AddSingleton<Services.CartService>();
+            services.AddScoped<Services.AuthService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
