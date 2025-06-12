@@ -1,0 +1,4 @@
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+header { background: #FF3F6C; padding: 1rem; color: white; }
+.product { border: 1px solid #ddd; padding: 1rem; margin: 0.5rem; }
+.product img { max-width: 100%; }
